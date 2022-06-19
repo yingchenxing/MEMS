@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * <p>
@@ -16,6 +17,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@ToString
   public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -29,13 +31,13 @@ import lombok.Setter;
 
     private Float balance;
 
-    private String idCard;
+    private String idcard;
 
     private Integer role;
 
     private String account;
 
-    private byte[] password;
+    private String password;
 
     private String phone;
 

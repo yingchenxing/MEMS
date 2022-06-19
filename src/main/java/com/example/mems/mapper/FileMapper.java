@@ -16,10 +16,5 @@ import java.util.List;
  * @since 2022-06-19
  */
 public interface FileMapper extends BaseMapper<File> {
-    List<File> queryFileList();
-    List<File> querySyn0List();
-    int addFile(File file);
-    int updateFile(File file);
-    int deleteFile(int id);
 
 }

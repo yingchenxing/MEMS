@@ -3,6 +3,8 @@ package com.example.mems.service;
 import com.example.mems.entity.File;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -13,4 +15,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IFileService extends IService<File> {
 
+    List<File> queryFileBySyn(Integer syn);
 }

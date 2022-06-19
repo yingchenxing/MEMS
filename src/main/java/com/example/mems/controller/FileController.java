@@ -3,7 +3,10 @@ package com.example.mems.controller;
 
 import com.example.mems.entity.File;
 import com.example.mems.mapper.FileMapper;
+import com.example.mems.service.IFileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,7 +14,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author cold fish
@@ -21,17 +24,18 @@ import java.util.List;
 @RequestMapping("/file")
 public class FileController {
     @Autowired
-    private FileMapper filemapper;
-    @RequestMapping("/queryFileSyn0List")
-    public List<File> queryFileSyn0List(){
-        List<File> filelist=filemapper.querySyn0List();
-        for(File file:filelist){
+    private IFileService fileService;
+
+    @GetMapping("/syn/{syn}")
+    public List<File> queryFileBySyn(@PathVariable Integer syn) {
+        List<File> filelist = fileService.queryFileBySyn(syn);
+        for (File file : filelist) {
             System.out.println(file);
         }
         return filelist;
     }
 
-    }
+}
 
 
 

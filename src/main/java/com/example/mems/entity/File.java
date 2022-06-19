@@ -33,5 +33,7 @@ import lombok.Setter;
 
     private Integer userID;
 
+    private Integer syn;
+
 
 }

@@ -3,14 +3,16 @@ package com.example.mems.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.io.Serializable;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author cold fish
@@ -19,12 +21,12 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-  public class User implements Serializable {
+public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-      @TableId(value = "id", type = IdType.AUTO)
-      private Integer id;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
     private String name;
 
@@ -42,7 +44,7 @@ import lombok.ToString;
 
     private String phone;
 
-  @TableField(exist = false)
+    @TableField(exist = false)
     private String token;
 
 

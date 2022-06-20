@@ -24,9 +24,11 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("/log")
 public class LogController {
+
     @Resource
     private ILogService iLogService;
-    @PostMapping("/createlog")
+
+    @PostMapping()
     public Result createlog(@RequestBody User user, @RequestBody Float temperature){
         Log log=iLogService.createlog(user,temperature);
         return Result.success(log);

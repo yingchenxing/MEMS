@@ -21,14 +21,14 @@ import java.time.LocalDateTime;
 @RestController
 @RequestMapping("/ticket")
 public class TicketController {
-    @Resource
-    private ITicketService iTicketService;
-    @PostMapping("/buyticket")
-    /*有点疑惑是这里应该只用提交后三个数据,但是不知道怎么拿到user,mybatis-puls没学过*/
-    public Result buyticket(@RequestBody User user, @RequestBody Integer frontId, @RequestBody Integer toId, @RequestBody LocalDateTime time){
-        Ticket ticket1=iTicketService.buyticket(user,frontId,toId,time);
 
-       return Result.success(ticket1);
+    @Resource
+    private ITicketService ticketService;
+
+    @PostMapping()
+    /*有点疑惑是这里应该只用提交后三个数据,但是不知道怎么拿到user,mybatis-puls没学过*/
+    public Result save(@RequestBody Ticket ticket){
+       return Result.success(ticketService.saveOrUpdate(ticket));
     }
 
 }

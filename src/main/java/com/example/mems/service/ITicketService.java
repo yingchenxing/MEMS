@@ -2,6 +2,9 @@ package com.example.mems.service;
 
 import com.example.mems.entity.Ticket;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.mems.entity.User;
+
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -12,5 +15,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2022-06-20
  */
 public interface ITicketService extends IService<Ticket> {
+    Ticket buyticket(User user, Integer frontId, Integer toId, LocalDateTime time);
+
 
 }

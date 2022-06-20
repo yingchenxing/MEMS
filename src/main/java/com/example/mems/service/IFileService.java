@@ -3,6 +3,8 @@ package com.example.mems.service;
 import com.example.mems.entity.File;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.io.IOException;
+
 /**
  * <p>
  *  服务类
@@ -11,6 +13,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author cold fish
  * @since 2022-06-20
  */
-public interface IFileService extends IService<File> {
-
+public interface IFileService extends IService<File>  {
+File uploadpicture() throws IOException;
 }

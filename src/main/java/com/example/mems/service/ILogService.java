@@ -2,6 +2,7 @@ package com.example.mems.service;
 
 import com.example.mems.entity.Log;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.mems.entity.User;
 
 /**
  * <p>
@@ -12,5 +13,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2022-06-20
  */
 public interface ILogService extends IService<Log> {
+   Log createlog(User user, float temperature);
 
 }

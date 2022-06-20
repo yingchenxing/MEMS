@@ -5,13 +5,10 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.mems.common.Result;
 import com.example.mems.entity.File;
 import com.example.mems.service.IFileService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -38,5 +35,13 @@ public class FileController {
         }
         return Result.success(filelist);
     }
+    @PostMapping("uploadpicture")
+    public Result uploadpicture( ) throws IOException {
+        File file=fileService.uploadpicture();
+        return Result.success(file);
+    }
+
+
+
 }
 

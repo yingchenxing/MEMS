@@ -21,10 +21,11 @@ import lombok.Setter;
 
     private static final long serialVersionUID = 1L;
 
+
       @TableId(value = "id", type = IdType.AUTO)
       private Integer id;
 
-    private Float price;
+    private  Integer price;
 
     private LocalDateTime timestamp;
 

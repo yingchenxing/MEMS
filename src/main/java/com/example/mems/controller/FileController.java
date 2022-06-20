@@ -1,42 +1,42 @@
 package com.example.mems.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.mems.common.Result;
 import com.example.mems.entity.File;
-import com.example.mems.mapper.FileMapper;
 import com.example.mems.service.IFileService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * <p>
- * 前端控制器
+ *  前端控制器
  * </p>
  *
  * @author cold fish
- * @since 2022-06-19
+ * @since 2022-06-20
  */
 @RestController
 @RequestMapping("/file")
 public class FileController {
-    @Autowired
+    @Resource
     private IFileService fileService;
 
     @GetMapping("/syn/{syn}")
-    public List<File> queryFileBySyn(@PathVariable Integer syn) {
-        List<File> filelist = fileService.queryFileBySyn(syn);
+    public Result queryFileBySyn(@PathVariable Integer syn) {
+        QueryWrapper<File> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("syn", syn);
+        List<File> filelist = fileService.list(queryWrapper);
         for (File file : filelist) {
             System.out.println(file);
         }
-        return filelist;
+        return Result.success(filelist);
     }
-
 }
-
-
-
 

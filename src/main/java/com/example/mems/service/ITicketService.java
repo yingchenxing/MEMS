@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author cold fish
- * @since 2022-06-19
+ * @since 2022-06-20
  */
 public interface ITicketService extends IService<Ticket> {
 

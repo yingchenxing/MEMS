@@ -26,7 +26,7 @@ public class CodeGenerator {
                 .strategyConfig(builder -> {
                     builder.entityBuilder().enableLombok();
                     builder.controllerBuilder().enableRestStyle();
-                    builder.addInclude("user") // 设置需要生成的表名
+                    builder.addInclude("file") // 设置需要生成的表名
                             .addInclude("file") // 设置需要生成的表名
                             .addInclude("log") // 设置需要生成的表名
                             .addInclude("station") // 设置需要生成的表名

@@ -13,7 +13,7 @@ import lombok.Setter;
  * </p>
  *
  * @author cold fish
- * @since 2022-06-19
+ * @since 2022-06-20
  */
 @Getter
 @Setter
@@ -28,11 +28,11 @@ import lombok.Setter;
 
     private LocalDateTime timestamp;
 
-    private Integer userID;
+    private Integer userId;
 
-    private Integer fromID;
+    private Integer fromId;
 
-    private Integer toID;
+    private Integer toId;
 
 
 }

@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author cold fish
- * @since 2022-06-19
+ * @since 2022-06-20
  */
 public interface LogMapper extends BaseMapper<Log> {
 

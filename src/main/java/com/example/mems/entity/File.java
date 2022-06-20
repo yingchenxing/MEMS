@@ -12,7 +12,7 @@ import lombok.Setter;
  * </p>
  *
  * @author cold fish
- * @since 2022-06-19
+ * @since 2022-06-20
  */
 @Getter
 @Setter
@@ -31,7 +31,7 @@ import lombok.Setter;
 
     private String url;
 
-    private Integer userID;
+    private Integer userId;
 
     private Integer syn;
 

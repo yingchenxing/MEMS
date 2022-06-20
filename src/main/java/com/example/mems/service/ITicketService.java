@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
  * @since 2022-06-20
  */
 public interface ITicketService extends IService<Ticket> {
-    Ticket buyticket(User user, Integer frontId, Integer toId, LocalDateTime time);
+//    Ticket buyticket(User user, Integer frontId, Integer toId, LocalDateTime time);
 
 
 }

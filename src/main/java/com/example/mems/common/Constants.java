@@ -3,6 +3,7 @@ package com.example.mems.common;
 public interface Constants {
     String CODE_200="200";//success
     String CODE_300="300";//right limit
+    String CODE_402="402";//IO error
     String CODE_500="500";//system error
     String CODE_401="401";
     String CODE_400="400";//Parameter error
@@ -10,7 +11,8 @@ public interface Constants {
 
     String DICT_TYPE_ICON="icon";
 
-    String ROLE_ADMIN="ROLE_ADMIN";
-    String ROLE_USER="ROLE_USER";
+    Integer ROLE_USER=1;
+    Integer ROLE_ADMIN=2;
+    Integer ROLE_BOSS=3;
 
 }

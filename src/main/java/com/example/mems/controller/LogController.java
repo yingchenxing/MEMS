@@ -25,15 +25,15 @@ import javax.annotation.Resource;
 @RequestMapping("/log")
 public class LogController {
 
-    @Resource
-    private ILogService iLogService;
-
-    @PostMapping()
-    public Result createlog(@RequestBody User user, @RequestBody Float temperature){
-        Log log=iLogService.createlog(user,temperature);
-        return Result.success(log);
-
-    }
+//    @Resource
+//    private ILogService iLogService;
+//
+//    @PostMapping()
+//    public Result save(@RequestBody User user, @RequestBody Float temperature){
+//        Log log=iLogService.createlog(user,temperature);
+//        return Result.success(log);
+//
+//    }
 
 }
 

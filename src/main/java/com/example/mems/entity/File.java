@@ -25,7 +25,7 @@ import lombok.Setter;
 
     private String name;
 
-    private Integer size;
+    private Long size;
 
     private String md5;
 

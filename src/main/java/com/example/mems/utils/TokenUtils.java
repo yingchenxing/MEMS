@@ -30,7 +30,7 @@ public class TokenUtils {
 
     public static String getToken(String userId, String password) {
         return JWT.create().withAudience(userId)// save userId into token
-                .withExpiresAt(DateUtil.offsetHour(new Date(), 2))//2 hours
+//                .withExpiresAt(DateUtil.offsetHour(new Date(), 2))//2 hours
                 .sign(Algorithm.HMAC256(password));//make password the key of token
     }
 

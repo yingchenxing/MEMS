@@ -13,6 +13,6 @@ import com.example.mems.entity.User;
  * @since 2022-06-20
  */
 public interface ILogService extends IService<Log> {
-   Log createlog(User user, float temperature);
+//   Log createlog(User user, float temperature);
 
 }

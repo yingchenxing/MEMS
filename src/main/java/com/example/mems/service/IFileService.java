@@ -7,12 +7,14 @@ import java.io.IOException;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author cold fish
  * @since 2022-06-20
  */
-public interface IFileService extends IService<File>  {
-File uploadpicture() throws IOException;
+public interface IFileService extends IService<File> {
+//    File uploadpicture() throws IOException;
+//
+    int deleteById(Integer id);
 }

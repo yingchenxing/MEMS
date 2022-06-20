@@ -27,52 +27,52 @@ import java.time.LocalDateTime;
  */
 @Service
 public class TicketServiceImpl extends ServiceImpl<TicketMapper, Ticket> implements ITicketService {
-    @Resource
-    private TicketMapper ticketMapper;
-    @Resource
-    private  IUserService iUserService;
-    @Resource
-    private ITicketService iTicketService;
-    private static final Log LOG = Log.get();
-    @Override
-    public Ticket buyticket(User user, Integer frontId, Integer toId, LocalDateTime time){
-        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("id",user.getId());
-        User one;
-        Ticket two=null;
-        try {
-           one= iUserService.getOne(queryWrapper);
-        } catch (Exception e) {
-            LOG.error(e);
-            throw new ServiceException(Constants.CODE_500, "System error!");
-        }
-        if(one!=null){
-            Integer fee=calculateprice(frontId,toId);
-           if(one.getBalance()>=fee){
-               float left=one.getBalance()-fee;
-               one.setBalance(left);
-              iUserService.save(one);/*是不是持久化user的余额*/
-               two.setFromId(frontId);
-               two.setPrice(fee);
-               two.setToId(toId);
-               two.setUserId(one.getId());
-               iTicketService.save(two);
-            return two;
-           }else{
-               throw new ServiceException(Constants.CODE_400,"balance not enough!");
-           }
-        }else{
-            throw new ServiceException(Constants.CODE_500, "System error!");
-        }
-
-    }
-
-    public Integer calculateprice(Integer frontId,Integer toId){
-        return toId-frontId;/*没写*/
-    }
-
-
-
+//    @Resource
+//    private TicketMapper ticketMapper;
+//    @Resource
+//    private  IUserService iUserService;
+//    @Resource
+//    private ITicketService iTicketService;
+//    private static final Log LOG = Log.get();
+//    @Override
+//    public Ticket buyticket(User user, Integer frontId, Integer toId, LocalDateTime time){
+//        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+//        queryWrapper.eq("id",user.getId());
+//        User one;
+//        Ticket two=null;
+//        try {
+//           one= iUserService.getOne(queryWrapper);
+//        } catch (Exception e) {
+//            LOG.error(e);
+//            throw new ServiceException(Constants.CODE_500, "System error!");
+//        }
+//        if(one!=null){
+//            Integer fee=calculateprice(frontId,toId);
+//           if(one.getBalance()>=fee){
+//               float left=one.getBalance()-fee;
+//               one.setBalance(left);
+//              iUserService.save(one);/*是不是持久化user的余额*/
+//               two.setFromId(frontId);
+//               two.setPrice(fee);
+//               two.setToId(toId);
+//               two.setUserId(one.getId());
+//               iTicketService.save(two);
+//            return two;
+//           }else{
+//               throw new ServiceException(Constants.CODE_400,"balance not enough!");
+//           }
+//        }else{
+//            throw new ServiceException(Constants.CODE_500, "System error!");
+//        }
+//
+//    }
+//
+//    public Integer calculateprice(Integer frontId,Integer toId){
+//        return toId-frontId;/*没写*/
+//    }
+//
+//
+//
 
 
 

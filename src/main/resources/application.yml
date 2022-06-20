@@ -7,6 +7,7 @@ spring:
 
 server:
   port: 8080
+  ip: localhost
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
@@ -18,3 +19,6 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 #    map-underscore-to-camel-case: false
+
+file:
+  path: C:\Users\96392\Desktop\Code\MEMS\file\

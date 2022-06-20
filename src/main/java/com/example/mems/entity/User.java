@@ -1,6 +1,7 @@
 package com.example.mems.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import lombok.Getter;
@@ -40,6 +41,9 @@ import lombok.ToString;
     private String password;
 
     private String phone;
+
+  @TableField(exist = false)
+    private String token;
 
 
 }

@@ -26,12 +26,12 @@ public class CodeGenerator {
                 .strategyConfig(builder -> {
                     builder.entityBuilder().enableLombok();
                     builder.controllerBuilder().enableRestStyle();
-                    builder.addInclude("file") // 设置需要生成的表名
-                            .addInclude("file") // 设置需要生成的表名
-                            .addInclude("log") // 设置需要生成的表名
-                            .addInclude("station") // 设置需要生成的表名
-                            .addInclude("ticket") // 设置需要生成的表名
-                            .addTablePrefix("t_", "c_") // 设置过滤表前缀
+                    builder.addInclude("role") // 设置需要生成的表名
+//                            .addInclude("file") // 设置需要生成的表名
+//                            .addInclude("log") // 设置需要生成的表名
+//                            .addInclude("station") // 设置需要生成的表名
+//                            .addInclude("ticket") // 设置需要生成的表名
+//                            .addTablePrefix("t_", "c_") // 设置过滤表前缀
                     ;
                 })
 //                .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板

@@ -7,6 +7,7 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.mems.common.Constants;
 import com.example.mems.common.Result;
 import com.example.mems.entity.File;
@@ -150,6 +151,30 @@ public class FileController {
 
         //仅逻辑删除
         return Result.success(fileService.deleteById(id));
+    }
+
+    //分页查询mybatis-plus方式
+    @GetMapping("/page")
+    public Result findPage(@RequestParam Integer pageNum,
+                           @RequestParam Integer pageSize,
+                           @RequestParam(defaultValue = "") String name) {
+        QueryWrapper<File> queryWrapper = new QueryWrapper<>();
+        if (!name.isEmpty())
+            queryWrapper.like("name", name);
+        queryWrapper.orderByDesc("id");
+//        queryWrapper.eq("is_delete",false);
+        return Result.success(fileService.page(new Page<>(pageNum, pageSize), queryWrapper));
+    }
+
+    @PostMapping("/del/batch")
+    public Result deleteBatch(@RequestBody List<Integer> ids) {
+        QueryWrapper<File> queryWrapper = new QueryWrapper<>();
+        queryWrapper.in("id", ids);
+        List<File> files = fileService.list(queryWrapper);
+        for (File file : files) {
+            //删除
+        }
+        return Result.success();
     }
 
 

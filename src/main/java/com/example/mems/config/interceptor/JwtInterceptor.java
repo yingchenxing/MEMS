@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 // Intercept by token
-@Component
 public class JwtInterceptor implements HandlerInterceptor {
     @Autowired
     private IUserService userService;

@@ -5,15 +5,13 @@ import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.mems.common.Constants;
 import com.example.mems.common.Result;
 import com.example.mems.entity.File;
-import com.example.mems.entity.User;
 import com.example.mems.service.IFileService;
-import com.example.mems.utils.TokenUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,7 +21,6 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URLEncoder;
-import java.nio.file.Files;
 import java.util.List;
 
 /**
@@ -124,9 +121,21 @@ public class FileController {
     @GetMapping("/{fileUuid}")
     public Result download(@PathVariable String fileUuid, HttpServletResponse response) {
         java.io.File downloadFile = new java.io.File(fileUploadPath + fileUuid);
+        QueryWrapper<File> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like("url", "%" + fileUuid);
+        List<File> list = fileService.list(queryWrapper);
+        if (list.size() == 0)
+            return Result.error(Constants.CODE_402, "Invalid download");
+        if (list.size() != 1) {
+            new Exception("!!!more than one file match!!!:" + fileUuid).printStackTrace();
+            return Result.error(Constants.CODE_402, "Service Badly Response");
+        }
+
+        String personFileName = list.get(0).getName();
+        System.out.println("download:" + downloadFile.getName());
         try {
             ServletOutputStream os = response.getOutputStream();
-            response.addHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(fileUuid, "UTF-8"));
+            response.addHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(personFileName, "UTF-8"));
             response.setContentType("application/octet-stream");
             os.write(FileUtil.readBytes(downloadFile));
             os.flush();
@@ -135,6 +144,14 @@ public class FileController {
             return Result.error(Constants.CODE_402, "Fail to download");
         }
         return Result.success();
+    }
+
+    @GetMapping("/syn/md5/{md5}")
+    public void verify(@PathVariable String md5, HttpServletResponse response) {
+        UpdateWrapper<File> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("md5", md5).set("syn", 1);
+        System.out.println("md5:" + md5 + "syn finish");
+        fileService.update(updateWrapper);
     }
 
     private File getFileByMd5(String md5) {
